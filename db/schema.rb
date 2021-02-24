@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_144834) do
+ActiveRecord::Schema.define(version: 2021_02_24_042036) do
+
+  create_table "user_levels", force: :cascade do |t|
+    t.string "level"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -18,6 +24,9 @@ ActiveRecord::Schema.define(version: 2021_02_23_144834) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
+    t.integer "user_level_id", null: false
+    t.index ["user_level_id"], name: "index_users_on_user_level_id"
   end
 
+  add_foreign_key "users", "user_levels"
 end
