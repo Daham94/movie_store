@@ -9,4 +9,5 @@ class User < ApplicationRecord
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+  validates :user_level_id, presence: true
 end

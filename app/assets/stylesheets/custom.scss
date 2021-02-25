@@ -2,9 +2,9 @@
 @import "bootstrap";
 
 @mixin box_sizing {
--moz-box-sizing: border-box;
--webkit-box-sizing: border-box;
-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 /* universal */
 body {
@@ -95,7 +95,7 @@ footer {
 }
 
 /* forms */
-input, textarea, select, .uneditable-input {
+input, textarea .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
@@ -103,6 +103,43 @@ input, textarea, select, .uneditable-input {
   padding: 5px;
 }
 
+select{
+  margin-bottom: 15px;
+}
+
 input {
   height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+.row{
+  aside{
+    margin: 0px;
+    padding: 0px;
+    width: 200px;
+  }
+}
+
+#add-video{
+  margin-left: 50px;
+}
+
+.actor-form{
+  input{
+    position: absolute;
+    float: right;
+  }
 }
