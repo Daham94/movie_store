@@ -10,7 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_042036) do
+ActiveRecord::Schema.define(version: 2021_02_25_080952) do
+
+  create_table "actor_countries", force: :cascade do |t|
+    t.string "country"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "actor_genders", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "actors", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "actor_gender_id", null: false
+    t.integer "actor_country_id", null: false
+    t.index ["actor_country_id"], name: "index_actors_on_actor_country_id"
+    t.index ["actor_gender_id"], name: "index_actors_on_actor_gender_id"
+  end
+
+  create_table "content_ratings", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "user_levels", force: :cascade do |t|
     t.string "level"
@@ -28,5 +57,20 @@ ActiveRecord::Schema.define(version: 2021_02_24_042036) do
     t.index ["user_level_id"], name: "index_users_on_user_level_id"
   end
 
+  create_table "videos", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.binary "thumbnail"
+    t.date "release_date"
+    t.integer "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "content_rating_id", null: false
+    t.index ["content_rating_id"], name: "index_videos_on_content_rating_id"
+  end
+
+  add_foreign_key "actors", "actor_countries"
+  add_foreign_key "actors", "actor_genders"
   add_foreign_key "users", "user_levels"
+  add_foreign_key "videos", "content_ratings"
 end

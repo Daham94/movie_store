@@ -1,0 +1,5 @@
+<%= form_with(model: @user_level, local: true, class: "form-inline") do |f| %>
+  <%= f.label :user_level, "Add More User Levels:" %><br>
+  <%= f.text_field :level, class: 'form-control' %>
+  <%= f.submit "ADD", class: 'form-control' %>
+<% end %>

@@ -1,15 +1,15 @@
-<%= form_with(model: @video, local: true) do |f| %>
+<%= form_with(model: @actor, local: true) do |f| %>
   <%= f.label :name, "Name:" %><br>
   <%= f.text_field :name, class: 'form-control' %>
 
   <%= f.label :age, "Age:" %><br>
   <%= f.number_field :age, class: 'form-control' %>
 
-  <%= f.label :gender, "Gender:" %><br>
-  <%= f.text_field :gender_id, class: 'form-control' %>
-  <%= f.submit "ADD", class: "btn btn-primary" %>
+  <%= f.label :actor_gender, "Gender:" %><br>
+  <%= f.collection_select :actor_gender_id, ActorGender.all, :id, :name, class: 'form-control' %><br>
 
-  <%= f.label :country, "Country:" %><br>
-  <%= f.text_field :country, class: 'form-control' %>
+  <%= f.label :actor_country, "Country:" %><br>
+  <%= f.collection_select :actor_country_id, ActorCountry.all, :id, :country, class: 'form-control' %><br>
+
   <%= f.submit "ADD", class: "btn btn-primary" %>
 <% end %>

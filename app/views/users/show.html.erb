@@ -1,5 +1,20 @@
-<div class="row">
+<div class="container">
+	<div class="dashboard">
+		<ul>
+			<li id="link"><%= link_to "User Registration",signup_path %></li>
+			<li id="link"><%= link_to "Videos",help_path %></li>
+			<li id="link"><%= link_to "Rentals",help_path %></li>
+			<li id="link"><%= link_to "Customers",help_path %></li>
+		</ul>
+	</div>
+</div>
 
+
+
+
+
+<div class="row">
+	<div class="col">
 			<aside class="col-md-4">
 				<h2>Actors' Info</h2>
 				<section class="actor_form">
@@ -9,6 +24,8 @@
 
 				</section>
 			</aside>
+	</div>
+
 
 				<div class="col-md-6 col-md-offset-3" id="add-video">
 					<h1>Add Videos</h1>
@@ -22,6 +39,7 @@
 			      <%= f.text_area :description, class: 'form-control' %>
 
 						<%= f.label :content_rating, "Content Rating:" %>
+						<%= f.collection_select :content_rating_id, ContentRating.all, :id, :name, class: 'form-control' %><br>
 
 			      <%= f.label :release_date, "Released Date:" %><br>
 			      <%= f.date_field :release_date, class: 'form-control' %>
@@ -29,14 +47,34 @@
 			      <%= f.label :rating, "Rating:" %>
 			      <%= f.text_field :rating, class: 'form-control' %>
 
-			      <%= f.label :content_rating, "Content Rating:" %>
-
-
 						<%= f.label :thumbnail, "Thumbnail:" %>
 						<%= f.file_field :thumbnail, class: 'form-control' %>
 
 			      <%= f.submit "Create my account", class: "btn btn-primary" %>
 			    <% end %>
 			  </div>
+
+				<div class="col">
+					<div class="add-stuff" id="add-stuff">
+						<h2>Add Stuff</h2>
+						<%= form_with(model: @actor_gender, local: true, class: "form-inline") do |f| %>
+						  <%= f.label :actor_gender, "Add Genders:" %><br>
+							<%= f.text_field :name, class: 'form-control' %>
+							<%= f.submit "ADD", class: 'form-control' %>
+						<% end %>
+
+						<%= form_with(model: @actor_country, local: true, class: "form-inline") do |f| %>
+						  <%= f.label :actor_country, "Add Countries:" %><br>
+							<%= f.text_field :country, class: 'form-control' %>
+							<%= f.submit "ADD", class: 'form-control' %>
+						<% end %>
+
+						<%= form_with(model: @content_rating, local: true, class: "form-inline") do |f| %>
+							<%= f.label :content_rating, "Add Content Ratings:" %><br>
+							<%= f.text_field :name, class: 'form-control' %>
+							<%= f.submit "ADD", class: 'form-control' %>
+						<% end %>
+					</div>
+				</div>
 
 	</div>
