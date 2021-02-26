@@ -5,7 +5,6 @@ class CreateVideos < ActiveRecord::Migration[6.0]
       t.string :description
       t.binary :thumbnail
       t.date :release_date
-      t.integer :rating
 
       t.timestamps
     end

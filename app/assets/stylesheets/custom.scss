@@ -140,8 +140,31 @@ input {
     margin-top: 15px;
 
   }
-  file_field{
+  .thumbnail{
     margin-top: 15px;
+    width: 45%;
+    border-style: hidden;
+  }
+
+  .release-date{
+    width: 45%;
+    float: right;
+    margin-top: -107px;
+    input{
+      padding: 3.5px;
+    }
+  }
+
+  .rating{
+    width: 45%;
+    margin-top: -20px;
+  }
+
+  .content-rating{
+    width: 45%;
+    float: right;
+    margin-top: -60px;
+    padding-right: 0px;
   }
 }
 
@@ -160,17 +183,17 @@ input {
 .dashboard{
   margin: 50px;
   text-align: center;
-  
+
 }
 
 #link{
   padding: 15px;
   margin: 10px;
-  width: 500px;
   list-style-type: none;
-
+  text-decoration: none;
+  overflow: hidden;
   display: inline;
-  border: 2px solid black;
   border-radius: 5px;
   width: 500px;
+  background-color: #eee;
 }

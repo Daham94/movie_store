@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :videos
   get 'sessions/new'
   get 'users/new'
   root 'static_pages#home'
@@ -9,5 +10,9 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get '/video', to: 'videos#index'
+  post '/video', to: 'dashboards#create'
+  get '/rental', to: 'dashboards#rental'
+  get '/customer', to: 'dashboards#customer'
   resources :users
 end
