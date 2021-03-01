@@ -1,0 +1,12 @@
+<h1>Editing User</h1>
+
+<div class="row">
+  <%= render 'actor_form', user: @user %>
+
+  <div class="col-md-6 col-md-offset-3">
+    <%= render 'signup_form', user: @user %>
+  </div>
+</div>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>

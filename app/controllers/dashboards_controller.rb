@@ -3,7 +3,6 @@ class DashboardsController < ApplicationController
   end
 
   def video
-
   end
 
   def rental
@@ -12,13 +11,4 @@ class DashboardsController < ApplicationController
   def customer
   end
 
-  private
-    def video_params
-      params.require(:video).permit(:title, :description, :thumbnail,
-                                    :release_date, :rating, :content_rating_id)
-    end
-
-    def actor_params
-      params.require(:actor).permit(:name, :age, :actor_gender_id, :actor_country_id)
-    end
 end

@@ -1,8 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User ID:</strong>
+  <%= @user.id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Password_digest:</strong>
+  <%= @user.password_digest %>
+<p>
+  <strong>Created At:</strong>
+  <%= @user.created_at %>
+</p>
+
+<p>
+  <strong>Updated At:</strong>
+  <%= @user.updated_at %>
+</p>
+
+<p>
+  <strong>User Level:</strong>
+  <%= @user.user_level.level %>
+</p>
+<% if log_in_as_super_user? || log_in_as_admin_user? %>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %>
+<% end %>
+
 <div class="container">
 	<div class="dashboard">
 		<ul>
-			<li id="link"><%= link_to "User Registration",signup_path, class: "btn btn-light" %></li>
-			<li id="link"><%= link_to "Videos",video_path, class: "btn btn-light" %></li>
+			<% if log_in_as_super_user? || log_in_as_admin_user? %>
+        <li id="link"><%= link_to "User Registration", signup_path, class: "btn btn-light" %></li>
+      <% end %>
+			<li id="link"><%= link_to "Videos",videos_path, class: "btn btn-light" %></li>
 			<li id="link"><%= link_to "Rentals",rental_path, class: "btn btn-light" %></li>
 			<li id="link"><%= link_to "Customers",customer_path, class: "btn btn-light" %></li>
 		</ul>

@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Video ID:</strong>
+  <%= @video.id %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @video.title %>
 </p>
@@ -24,6 +29,7 @@
   <strong>Content Rating:</strong>
   <%= @video.content_rating.name %>
 </p>
-
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+<% if log_in_as_super_user? || log_in_as_admin_user %>
+  <%= link_to 'Edit', edit_video_path(@video) %> |
+  <%= link_to 'Back', videos_path %>
+<% end %>

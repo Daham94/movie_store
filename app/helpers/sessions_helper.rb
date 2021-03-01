@@ -11,6 +11,22 @@ module SessionsHelper
     end
   end
 
+  def log_in_as_super_user?
+    current_user.user_level_id==1
+  end
+
+  def log_in_as_admin_user?
+    current_user.user_level_id==2
+  end
+
+  def log_in_as_normal_user?
+    current_user.user_level_id==3
+  end
+
+  def log_in_as_customer?
+    current_user.user_level_id.nil?
+  end
+
   # Returns true if the user is logged in, false otherwise.
   def logged_in?
     !current_user.nil?
