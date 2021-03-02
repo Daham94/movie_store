@@ -13,6 +13,11 @@ class VideosController < ApplicationController
   # GET /videos/new
   def new
     @video = Video.new
+    @actor = Actor.new
+    @actor_gender = ActorGender.new
+    @actor_country = ActorCountry.new
+    @content_rating = ContentRating.new
+    @genre = Genre.new
   end
 
   # GET /videos/1/edit

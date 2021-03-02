@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_28_173505) do
+ActiveRecord::Schema.define(version: 2021_03_01_175303) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -70,6 +70,38 @@ ActiveRecord::Schema.define(version: 2021_02_28_173505) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.float "price"
+    t.integer "total_copies"
+    t.string "barcode_no"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "video_id", null: false
+    t.integer "media_type_id", null: false
+    t.index ["media_type_id"], name: "index_inventories_on_media_type_id"
+    t.index ["video_id"], name: "index_inventories_on_video_id"
+  end
+
+  create_table "media_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "movie_stocks", force: :cascade do |t|
+    t.boolean "is_rented"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "inventory_id", null: false
+    t.index ["inventory_id"], name: "index_movie_stocks_on_inventory_id"
+  end
+
   create_table "user_levels", force: :cascade do |t|
     t.string "level"
     t.datetime "created_at", precision: 6, null: false
@@ -100,6 +132,9 @@ ActiveRecord::Schema.define(version: 2021_02_28_173505) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "actors", "actor_countries"
   add_foreign_key "actors", "actor_genders"
+  add_foreign_key "inventories", "media_types"
+  add_foreign_key "inventories", "videos"
+  add_foreign_key "movie_stocks", "inventories"
   add_foreign_key "users", "user_levels"
   add_foreign_key "videos", "content_ratings"
 end

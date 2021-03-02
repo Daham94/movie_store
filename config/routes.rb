@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :inventories
   resources :customers
   resources :videos
   get 'sessions/new'
@@ -14,6 +15,12 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/videos', to: 'dashboards#video'
   post '/video', to: 'videos#create'
+  post '/actors', to: 'actors#create'
+  post '/actor_genders', to: 'actor_genders#create'
+  post '/actor_countries', to: 'actor_countries#create'
+  post '/content_ratings', to: 'content_ratings#create'
+  post '/genres', to: 'genres#create'
+  post '/media_types', to: 'media_types#create'
   get '/rental', to: 'dashboards#rental'
   get '/customer', to: 'dashboards#customer'
   resources :users

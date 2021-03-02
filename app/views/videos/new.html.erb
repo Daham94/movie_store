@@ -1,5 +1,53 @@
+<% provide(:title, 'Video') %>
 <h1>New Video</h1>
 
-<%= render 'form', video: @video %>
+<div class="row">
+  <div class="col">
+      <aside class="col-md-4">
+        <h2>Actors' Info</h2>
+        <section class="actor_form">
+          <%= render 'shared/actor_form', actor: @actor %>
+        </section>
+        <section class="actor_info">
+
+        </section>
+      </aside>
+  </div>
+
+  <div class="col-md-6 col-md-offset-3" id="add-video">
+    <%= render 'form', video: @video %>
+  </div>
+
+  <div class="col">
+    <div class="add-stuff" id="add-stuff">
+      <h2>Add Stuff</h2>
+      <%= form_with(model: @actor_gender, local: true, class: "form-inline") do |f| %>
+        <%= f.label :actor_gender, "Add Genders:" %><br>
+        <%= f.text_field :name, class: 'form-control' %>
+        <%= f.submit "ADD", class: 'form-control' %>
+      <% end %>
+
+      <%= form_with(model: @actor_country, local: true, class: "form-inline") do |f| %>
+        <%= f.label :actor_country, "Add Countries:" %><br>
+        <%= f.text_field :country, class: 'form-control' %>
+        <%= f.submit "ADD", class: 'form-control' %>
+      <% end %>
+
+      <%= form_with(model: @content_rating, local: true, class: "form-inline") do |f| %>
+        <%= f.label :content_rating, "Add Content Ratings:" %><br>
+        <%= f.text_field :name, class: 'form-control' %>
+        <%= f.submit "ADD", class: 'form-control' %>
+      <% end %>
+
+      <%= form_with(model: @genre, local: true, class: "form-inline") do |f| %>
+        <%= f.label :genre, "Add Genres:" %><br>
+        <%= f.text_field :name, class: 'form-control' %>
+        <%= f.submit "ADD", class: 'form-control' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
 
 <%= link_to 'Back', videos_path %>

@@ -12,7 +12,7 @@ class UserLevelsController < ApplicationController
 
       if @user_level.save
         flash[:success] = "User Level Added!"
-        render 'new'
+        
       else
         render 'new'
       end

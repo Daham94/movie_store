@@ -1,0 +1,5 @@
+<%= form_with(model: @media_type, local: true, class: "form-inline") do |f| %>
+  <%= f.label :media_type, "Add More Media Types:" %><br>
+  <%= f.text_field :name, class: 'form-control' %>
+  <%= f.submit "ADD", class: 'form-control' %>
+<% end %>
