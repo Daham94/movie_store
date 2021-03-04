@@ -1,3 +1,4 @@
 class Genre < ApplicationRecord
-  has_and_belongs_to_many :videos
+  has_many :genres_videos
+  has_many :videos, through: :genres_videos
 end

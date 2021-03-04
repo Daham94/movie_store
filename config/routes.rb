@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :inventories
   resources :customers
   resources :videos
+  resources :actors
+  resources :genres
+  #resources :actor_videos
   get 'sessions/new'
   get 'users/new'
   root 'static_pages#home'
@@ -21,6 +24,7 @@ Rails.application.routes.draw do
   post '/content_ratings', to: 'content_ratings#create'
   post '/genres', to: 'genres#create'
   post '/media_types', to: 'media_types#create'
+  #post '/actor_videos', to: 'videos#create'
   get '/rental', to: 'dashboards#rental'
   get '/customer', to: 'dashboards#customer'
   resources :users

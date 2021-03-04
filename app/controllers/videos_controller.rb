@@ -18,6 +18,7 @@ class VideosController < ApplicationController
     @actor_country = ActorCountry.new
     @content_rating = ContentRating.new
     @genre = Genre.new
+
   end
 
   # GET /videos/1/edit
@@ -30,6 +31,7 @@ class VideosController < ApplicationController
 
     respond_to do |format|
       if @video.save
+
         format.html { redirect_to @video, notice: "Video was successfully created." }
         format.json { render :show, status: :created, location: @video }
       else
@@ -69,6 +71,7 @@ class VideosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def video_params
-      params.require(:video).permit(:title, :description, :thumbnail, :release_date, :content_rating_id)
+      params.require(:video).permit(:title, :description, :release_date, :content_rating_id, :thumbnail, :actor_ids=>[], :genre_ids=>[])
     end
+
 end

@@ -1,5 +1,6 @@
 class Actor < ApplicationRecord
-  has_and_belongs_to_many :videos
+  has_many :actor_videos
+  has_many :videos, through: :actors_videos
   belongs_to :actor_gender
   belongs_to :actor_country
 end

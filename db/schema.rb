@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_175303) do
+ActiveRecord::Schema.define(version: 2021_03_04_035718) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +56,15 @@ ActiveRecord::Schema.define(version: 2021_03_01_175303) do
     t.index ["actor_gender_id"], name: "index_actors_on_actor_gender_id"
   end
 
+  create_table "actors_videos", force: :cascade do |t|
+    t.integer "actor_id", null: false
+    t.integer "video_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["actor_id"], name: "index_actors_videos_on_actor_id"
+    t.index ["video_id"], name: "index_actors_videos_on_video_id"
+  end
+
   create_table "content_ratings", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -74,6 +83,13 @@ ActiveRecord::Schema.define(version: 2021_03_01_175303) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "genres_videos", id: false, force: :cascade do |t|
+    t.integer "genre_id", null: false
+    t.integer "video_id", null: false
+    t.index ["genre_id", "video_id"], name: "index_genres_videos_on_genre_id_and_video_id"
+    t.index ["video_id", "genre_id"], name: "index_genres_videos_on_video_id_and_genre_id"
   end
 
   create_table "inventories", force: :cascade do |t|
@@ -121,17 +137,22 @@ ActiveRecord::Schema.define(version: 2021_03_01_175303) do
   create_table "videos", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.binary "thumbnail"
     t.date "release_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "content_rating_id", null: false
+    t.string "thumbnail_file_name"
+    t.string "thumbnail_content_type"
+    t.integer "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
     t.index ["content_rating_id"], name: "index_videos_on_content_rating_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "actors", "actor_countries"
   add_foreign_key "actors", "actor_genders"
+  add_foreign_key "actors_videos", "actors"
+  add_foreign_key "actors_videos", "videos"
   add_foreign_key "inventories", "media_types"
   add_foreign_key "inventories", "videos"
   add_foreign_key "movie_stocks", "inventories"

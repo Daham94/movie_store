@@ -8,7 +8,29 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
+
 import "bootstrap"
+import 'select2'
+import 'select2/dist/css/select2.css'
+
+$(document).on("turbolinks:load", () => {
+  if ($('.upload-hider-labels').length > 0) {
+    $('.upload-hider-labels').each(function() {
+      return $(this).closest('.field').find('.upload-hider-fields').hide();
+    });
+  }
+
+  $('form').on('click', '.replace-upload', function(e) {
+    var uploadFields, uploadLabels;
+    e.preventDefault();
+    uploadLabels = $(this).closest('.upload-hider-labels');
+    uploadFields = $(this).closest('.field').find('.upload-hider-fields');
+    uploadLabels.hide();
+    return uploadFields.show();
+  });
+  $('.select2').select2();
+})
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
