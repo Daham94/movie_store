@@ -1,0 +1,28 @@
+<%= form_with(model: movie_stock, local: true) do |form| %>
+  <% if movie_stock.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(movie_stock.errors.count, "error") %> prohibited this inventory from being saved:</h2>
+
+      <ul>
+        <% movie_stock.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :inventory %>
+    <%= form.collection_select :inventory_id, Inventory.all,
+                          :id, :id, class: 'form-control' %><br>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_rented %>
+    <%= form.text_field :is_rented %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

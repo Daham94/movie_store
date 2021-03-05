@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_035718) do
+ActiveRecord::Schema.define(version: 2021_03_04_161129) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -79,6 +79,22 @@ ActiveRecord::Schema.define(version: 2021_03_04_035718) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "customers_movie_stocks_users", force: :cascade do |t|
+    t.float "price"
+    t.float "late_fee"
+    t.float "discount"
+    t.date "rented_date"
+    t.date "returned_date"
+    t.integer "customer_id", null: false
+    t.integer "movie_stock_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_customers_movie_stocks_users_on_customer_id"
+    t.index ["movie_stock_id"], name: "index_customers_movie_stocks_users_on_movie_stock_id"
+    t.index ["user_id"], name: "index_customers_movie_stocks_users_on_user_id"
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -111,7 +127,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_035718) do
   end
 
   create_table "movie_stocks", force: :cascade do |t|
-    t.boolean "is_rented"
+    t.boolean "is_rented", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "inventory_id", null: false
@@ -153,6 +169,9 @@ ActiveRecord::Schema.define(version: 2021_03_04_035718) do
   add_foreign_key "actors", "actor_genders"
   add_foreign_key "actors_videos", "actors"
   add_foreign_key "actors_videos", "videos"
+  add_foreign_key "customers_movie_stocks_users", "customers"
+  add_foreign_key "customers_movie_stocks_users", "movie_stocks"
+  add_foreign_key "customers_movie_stocks_users", "users"
   add_foreign_key "inventories", "media_types"
   add_foreign_key "inventories", "videos"
   add_foreign_key "movie_stocks", "inventories"

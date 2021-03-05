@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  get 'movie_stocks/index'
+  get 'movie_stocks/new'
   resources :inventories
   resources :customers
   resources :videos
   resources :actors
   resources :genres
+  resources :movie_stocks
+  resources :customers_movie_stocks_users
   #resources :actor_videos
   get 'sessions/new'
   get 'users/new'

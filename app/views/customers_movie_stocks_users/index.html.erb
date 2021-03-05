@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rentals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rental ID</th>
+      <th>Price</th>
+      <th>Late Fee</th>
+      <th>Discount</th>
+      <th>Rented Date</th>
+      <th>Returned Date</th>
+      <th>Customer</th>
+      <th>Movie Stock</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers_movie_stocks_users.each do |customer_movie_stock_user| %>
+      <tr>
+        <td><%= customer_movie_stock_user.id %></td>
+        <td><%= customer_movie_stock_user.price %></td>
+        <td><%= customer_movie_stock_user.late_fee %></td>
+        <td><%= customer_movie_stock_user.discount %></td>
+        <td><%= customer_movie_stock_user.rented_date %></td>
+        <td><%= customer_movie_stock_user.returned_date %></td>
+        <td><%= customer_movie_stock_user.customer.name %></td>
+        <td><%= customer_movie_stock_user.movie_stock_id %></td>
+        <td><%= customer_movie_stock_user.user.name %></td>
+        <td><%= link_to 'Show', customer_movie_stock_user %></td>
+        <td><%= link_to 'Edit', edit_customers_movie_stocks_user_path(customer_movie_stock_user) %></td>
+        <% if log_in_as_super_user? || log_in_as_admin_user? %>
+          <td><%= link_to 'Destroy', customer_movie_stock_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Inventory', new_customers_movie_stocks_user_path %>

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @customer_movie_stock_user.price %>
+</p>
+
+<p>
+  <strong>Late Fee:</strong>
+  <%= @customer_movie_stock_user.late_fee %>
+</p>
+
+<p>
+  <strong>Discount:</strong>
+  <%= @customer_movie_stock_user.discount %>
+</p>
+
+<p>
+  <strong>Rented Date:</strong>
+  <%= @customer_movie_stock_user.rented_date %>
+</p>
+
+<p>
+  <strong>Returned Date:</strong>
+  <%= @customer_movie_stock_user.returned_date %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @customer_movie_stock_user.customer.name %>
+</p>
+
+<p>
+  <strong>Movie Stock:</strong>
+  <%= @customer_movie_stock_user.movie_stock_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @customer_movie_stock_user.user.name %>
+</p>
+
+<%= link_to 'Edit', edit_customers_movie_stocks_user_path(@customer_movie_stock_user) %> |
+<%= link_to 'Back', customers_movie_stocks_users_path %>
