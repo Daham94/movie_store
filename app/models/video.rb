@@ -1,4 +1,5 @@
 class Video < ApplicationRecord
+  searchkick
   has_many :actors_videos
   has_many :actors, through: :actors_videos
   #accepts_nested_attributes_for :actor_videos, allow_destroy: true

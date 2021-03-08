@@ -1,0 +1,9 @@
+<div class="row">
+  <% @videos.each do |video| %>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <%= link_to (image_tag video.thumbnail.url(:medium), class: 'thumbnail'), video %>
+      </div>
+    </div>
+  <% end %>
+</div>
