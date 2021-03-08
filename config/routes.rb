@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
-  get 'movie_stocks/index'
-  get 'movie_stocks/new'
+
+  resources :users
   resources :inventories
   resources :customers
-  resources :videos
+  resources :videos do
+    resources :reviews, except: [:show, :index]
+  end
   resources :actors
   resources :genres
   resources :movie_stocks
   resources :customers_movie_stocks_users
   #resources :actor_videos
-  get 'sessions/new'
-  get 'users/new'
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
@@ -19,8 +19,11 @@ Rails.application.routes.draw do
   post '/user_levels', to: 'user_levels#create'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
+  get '/customer_login', to: 'customer_sessions#new'
+  post '/customer_login', to: 'customer_sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  get '/videos', to: 'dashboards#video'
+  get '/logout', to: 'sessions#destroy'
+#  get '/videos', to: 'dashboards#video'
   post '/video', to: 'videos#create'
   post '/actors', to: 'actors#create'
   post '/actor_genders', to: 'actor_genders#create'
@@ -30,6 +33,9 @@ Rails.application.routes.draw do
   post '/media_types', to: 'media_types#create'
   #post '/actor_videos', to: 'videos#create'
   get '/rental', to: 'dashboards#rental'
-  get '/customer', to: 'dashboards#customer'
-  resources :users
+
+
+
+  get 'movie_stocks/index'
+  get 'movie_stocks/new'
 end

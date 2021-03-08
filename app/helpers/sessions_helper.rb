@@ -11,6 +11,12 @@ module SessionsHelper
     end
   end
 
+  def current_customer
+    if session[:customer_id]
+      @current_customer ||= Customer.find_by(id: session[:customer_id])
+    end
+  end
+
   def log_in_as_super_user?
     current_user.user_level_id==1
   end

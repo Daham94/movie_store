@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_161129) do
+ActiveRecord::Schema.define(version: 2021_03_08_163134) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -134,6 +134,17 @@ ActiveRecord::Schema.define(version: 2021_03_04_161129) do
     t.index ["inventory_id"], name: "index_movie_stocks_on_inventory_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id", null: false
+    t.integer "video_id", null: false
+    t.index ["customer_id"], name: "index_reviews_on_customer_id"
+    t.index ["video_id"], name: "index_reviews_on_video_id"
+  end
+
   create_table "user_levels", force: :cascade do |t|
     t.string "level"
     t.datetime "created_at", precision: 6, null: false
@@ -161,6 +172,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_161129) do
     t.string "thumbnail_content_type"
     t.integer "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
+    t.integer "rating"
     t.index ["content_rating_id"], name: "index_videos_on_content_rating_id"
   end
 
@@ -175,6 +187,8 @@ ActiveRecord::Schema.define(version: 2021_03_04_161129) do
   add_foreign_key "inventories", "media_types"
   add_foreign_key "inventories", "videos"
   add_foreign_key "movie_stocks", "inventories"
+  add_foreign_key "reviews", "customers"
+  add_foreign_key "reviews", "videos"
   add_foreign_key "users", "user_levels"
   add_foreign_key "videos", "content_ratings"
 end

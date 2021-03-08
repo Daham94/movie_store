@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :price %>
-    <%= form.text_field :price, :value => Inventory.find(@movie_stock.inventory.id).price %>
+    <%= form.text_field :price, :value => Inventory.find(@movie_stock.inventory_id).price %>
   </div>
 
   <div class="field">

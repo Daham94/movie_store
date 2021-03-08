@@ -23,7 +23,15 @@
             </ul>
           </li>
           <% else %>
-            <li><%= link_to "Log in", login_path %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Login As <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Administration", login_path %></li>
+              <li><%= link_to "Customers", customer_login_path %></li>
+            </ul>
+          </li>
           <% end %>
         </ul>
       </nav>

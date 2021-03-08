@@ -8,6 +8,13 @@ class VideosController < ApplicationController
 
   # GET /videos/1 or /videos/1.json
   def show
+    @review = Review.where(video_id: @video.id).order("created_at DESC")
+
+    if @review.blank?
+      @avg_review = 0
+    else
+      @avg_review = @review.average(:rating).round(2)
+    end
   end
 
   # GET /videos/new
@@ -28,6 +35,15 @@ class VideosController < ApplicationController
   # POST /videos or /videos.json
   def create
     @video = Video.new(video_params)
+
+    @review = Review.where(video_id: @video.id)
+
+    if @review.blank?
+      @video.rating = 0
+    else
+      @video.rating = @review.average(:rating).round(2)
+    end
+
 
     respond_to do |format|
       if @video.save

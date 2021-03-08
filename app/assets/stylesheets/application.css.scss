@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+ //@import "bootstrap-spockets";
+ @import "bootstrap";
+
+ body{
+   background: #AA4847;
+ }
+
+ .reviews{
+   padding: 15px 0;
+   border-bottom: 1px solid #EAEAEA;
+   .star-rating{
+     padding-bottom: 8px;
+   }
+ }
