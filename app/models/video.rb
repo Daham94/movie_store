@@ -10,6 +10,6 @@ class Video < ApplicationRecord
   has_many :genres, :through => :genres_videos
   has_many :customers, :through => :reviews
   has_many :reviews, dependent: :destroy
-  has_attached_file :thumbnail, styles: {medium: "300*400"}
+  has_attached_file :thumbnail, styles: {medium: "200*300"}
   validates_attachment_content_type :thumbnail, content_type: /\Aimage\/.*\Z/
 end

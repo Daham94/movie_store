@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'mails/index'
+  get 'mails/send_mail'
   resources :users
   resources :inventories
   resources :customers
@@ -36,8 +38,8 @@ Rails.application.routes.draw do
   post '/media_types', to: 'media_types#create'
   #post '/actor_videos', to: 'videos#create'
   get '/rental', to: 'dashboards#rental'
-
-
+  get :send_reminder_mail, to: 'mails#send_reminder_mail', as: :send_reminder_mail
+  get :send_warning_mail, to: 'mails#send_warning_mail', as: :send_warning_mail
 
   get 'movie_stocks/index'
   get 'movie_stocks/new'

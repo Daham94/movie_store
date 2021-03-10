@@ -6,8 +6,8 @@ module CustomerSessionsHelper
 
   # Returns the current logged-in user (if any).
   def current_customer
-    if session[:customer_id]
-      @current_customer ||= Customer.find_by(id: session[:customer_id])
+    if customer_session[:customer_id]
+      @current_customer ||= Customer.find_by(id: customer_session[:customer_id])
     end
   end
 
@@ -20,5 +20,9 @@ module CustomerSessionsHelper
   def log_out
     reset_session
     @current_customer = nil
+  end
+
+  def is_a_user?
+    current_customer.is_user == true
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_08_163134) do
+ActiveRecord::Schema.define(version: 2021_03_09_140255) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2021_03_08_163134) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_user", default: false
   end
 
   create_table "customers_movie_stocks_users", force: :cascade do |t|
@@ -158,6 +159,7 @@ ActiveRecord::Schema.define(version: 2021_03_08_163134) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
     t.integer "user_level_id", null: false
+    t.boolean "is_user", default: true
     t.index ["user_level_id"], name: "index_users_on_user_level_id"
   end
 

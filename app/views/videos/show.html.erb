@@ -50,7 +50,7 @@
   </div>
 </div>
 
-<% if log_in_as_super_user? || log_in_as_admin_user %>
+<% if log_in_as_super_user? || log_in_as_admin_user? %>
   <%= link_to 'Edit', edit_video_path(@video) %> |
   <%= link_to 'Back', videos_path %>
 <% end %>
