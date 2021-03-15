@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>ID:</strong>
+  <%= @customer.id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @customer.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @customer.email %>
+</p>
+
+<p>
+  <strong>Password digest:</strong>
+  <%= @customer.password_digest %>
+</p>
+
+<%= link_to 'Send Reminder', send_reminder_mail_path(@customer) %> |
+<%= link_to 'Send Warning', send_warning_mail_path(@customer) %> |
+
+<% if log_in_as_super_user? || log_in_as_admin_user? %>
+  <%= link_to 'Edit', edit_admin_customer_path(@customer) %> |
+<% end %>
+<%= link_to 'Back', admin_customers_path %>

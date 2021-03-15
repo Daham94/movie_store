@@ -1,0 +1,2 @@
+module Admin::UserLevelsHelper
+end

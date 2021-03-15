@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Genres</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for genre in @genres %>
+    <tr>
+      <td><%= genre.name %></td>
+      <td><%= link_to "Show", [:admin, genre] %></td>
+      <td><%= link_to "Edit", edit_admin_genre_path(genre) %></td>
+      <td><%= link_to "Destroy", [:admin, genre], :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Admin/Genre", new_admin_genre_path %></p>

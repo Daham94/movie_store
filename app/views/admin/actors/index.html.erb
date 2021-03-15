@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Actors</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Gender</th>
+    <th>Country</th>
+  </tr>
+  <% for actor in @actors %>
+    <tr>
+      <td><%= actor.id %></td>
+      <td><%= actor.name %></td>
+      <td><%= actor.age %></td>
+      <td><%= actor.actor_gender.gender %></td>
+      <td><%= actor.actor_country.name %></td>
+      <td><%= link_to "Show", [:admin, actor] %></td>
+      <td><%= link_to "Edit", edit_admin_actor_path(actor) %></td>
+      <td><%= link_to "Destroy", [:admin, actor], :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Admin/Actor", new_admin_actor_path %></p>

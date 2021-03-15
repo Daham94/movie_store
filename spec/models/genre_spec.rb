@@ -1,5 +1,7 @@
-require 'rails_helper'
+require File.dirname(__FILE__) + '/../spec_helper'
 
-RSpec.describe Genre, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Genre do
+  it "should be valid" do
+    Genre.new.should be_valid
+  end
 end

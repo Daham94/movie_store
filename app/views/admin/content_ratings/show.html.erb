@@ -1,0 +1,12 @@
+<h1>Show Content Rating</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @content_rating.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_content_rating_path(@content_rating) %> |
+  <%= link_to "Destroy", [:admin, @content_rating], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", admin_content_ratings_path %>
+</p>

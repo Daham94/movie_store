@@ -1,0 +1,12 @@
+<h1>Show Genre</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @genre.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_genre_path(@genre) %> |
+  <%= link_to "Destroy", [:admin, @genre], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", admin_genres_path %>
+</p>

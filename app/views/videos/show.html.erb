@@ -26,6 +26,14 @@
                 <td><strong>Content Rating:</strong></td>
                 <td><%= @video.content_rating.name %></td>
               </tr>
+              <tr>
+                <td><strong>Genres:</strong></td>
+                <td><%= @video.genres.ids %></td>
+              </tr>
+              <tr>
+                <td><strong>Actors:</strong></td>
+                <td><%= @video.actors.ids %></td>
+              </tr>
             </tbody>
           </table>
           <%= link_to "Write a Review", new_video_review_path(@video) %>
@@ -50,10 +58,8 @@
   </div>
 </div>
 
-<% if log_in_as_super_user? || log_in_as_admin_user? %>
-  <%= link_to 'Edit', edit_video_path(@video) %> |
-  <%= link_to 'Back', videos_path %>
-<% end %>
+<%= link_to 'Back', videos_path %>
+
 
 <script>
   $('.star-rating').raty({

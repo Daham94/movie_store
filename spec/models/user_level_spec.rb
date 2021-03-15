@@ -1,5 +1,7 @@
-require 'rails_helper'
+require File.dirname(__FILE__) + '/../spec_helper'
 
-RSpec.describe UserLevel, type: :model do
-  
+describe UserLevel do
+  it "should be valid" do
+    UserLevel.new.should be_valid
+  end
 end

@@ -1,0 +1,18 @@
+<%= form_for [:admin, @content_rating] do |f| %>
+<% if @content_rating.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@content_rating.errors.count, "error") %> prohibited this content_rating from being saved:</h2>
+
+    <ul>
+      <% @content_rating.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

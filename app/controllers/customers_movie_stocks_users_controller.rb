@@ -18,7 +18,7 @@ class CustomersMovieStocksUsersController < ApplicationController
     @user = User.new
   end
 
-  # GET /inventories/1/edit
+    # GET /inventories/1/edit
   def edit
   end
 
@@ -28,7 +28,7 @@ class CustomersMovieStocksUsersController < ApplicationController
 
     respond_to do |format|
       if @customer_movie_stock_user.save
-        format.html { redirect_to @customer_movie_stock_user, notice: "Rental was successfully created." }
+        format.html { redirect_to [:admin, @customer_movie_stock_user], notice: "Rental was successfully created." }
         format.json { render :show, status: :created, location: @customer_movie_stock_user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +41,7 @@ class CustomersMovieStocksUsersController < ApplicationController
   def update
     respond_to do |format|
       if @customer_movie_stock_user.update(customer_movie_stock_user_params)
-        format.html { redirect_to @customer_movie_stock_user, notice: "Rental was successfully updated." }
+        format.html { redirect_to [:admin, @customer_movie_stock_user], notice: "Rental was successfully updated." }
         format.json { render :show, status: :ok, location: @customer_movie_stock_user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class CustomersMovieStocksUsersController < ApplicationController
   def destroy
     @customer_movie_stock_user.destroy
     respond_to do |format|
-      format.html { redirect_to customers_movie_stocks_users_url, notice: "Rental was successfully destroyed." }
+      format.html { redirect_to admin_customers_movie_stocks_users_url, notice: "Rental was successfully destroyed." }
       format.json { head :no_content }
     end
   end

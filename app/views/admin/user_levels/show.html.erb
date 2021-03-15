@@ -1,0 +1,12 @@
+<h1>Show User Level</h1>
+
+<p>
+  <strong>Level:</strong>
+  <%= @user_level.level %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_user_level_path(@user_level) %> |
+  <%= link_to "Destroy", [:admin, @user_level], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", admin_user_levels_path %>
+</p>

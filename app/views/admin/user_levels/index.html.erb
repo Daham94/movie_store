@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Levels</h1>
+
+<table>
+  <tr>
+    <th>Level</th>
+  </tr>
+  <% for user_level in @user_levels %>
+    <tr>
+      <td><%= user_level.level %></td>
+      <td><%= link_to "Show", [:admin, user_level] %></td>
+      <td><%= link_to "Edit", edit_admin_user_level_path(user_level) %></td>
+      <td><%= link_to "Destroy", [:admin, user_level], :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New User Level", new_admin_user_level_path %></p>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Actor Genders</h1>
+
+<table>
+  <tr>
+    <th>Gender</th>
+  </tr>
+  <% for actor_gender in @actor_genders %>
+    <tr>
+      <td><%= actor_gender.gender %></td>
+      <td><%= link_to "Show", [:admin, actor_gender] %></td>
+      <td><%= link_to "Edit", edit_admin_actor_gender_path(actor_gender) %></td>
+      <td><%= link_to "Destroy", [:admin, actor_gender], :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Admin/Actor Gender", new_admin_actor_gender_path %></p>

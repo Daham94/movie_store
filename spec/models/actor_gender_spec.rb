@@ -1,5 +1,7 @@
-require 'rails_helper'
+require File.dirname(__FILE__) + '/../spec_helper'
 
-RSpec.describe ActorGender, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe ActorGender do
+  it "should be valid" do
+    ActorGender.new.should be_valid
+  end
 end

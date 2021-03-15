@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Customers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Password digest</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.name %></td>
+        <td><%= customer.email %></td>
+        <td><%= customer.password_digest %></td>
+        <td><%= link_to 'Show', admin_customer_path(customer) %></td>
+        <% if log_in_as_super_user? || log_in_as_admin_user? %>
+          <td><%= link_to 'Edit', edit_admin_customer_path(customer) %></td>
+        <% end %>
+        <% if log_in_as_super_user? || log_in_as_admin_user? %>
+          <td><%= link_to 'Destroy', admin_customer_path(customer), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if log_in_as_super_user? || log_in_as_admin_user? %>
+  <%= link_to 'New Customer', new_admin_customer_path %>
+<% end %>

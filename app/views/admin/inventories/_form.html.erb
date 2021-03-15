@@ -1,0 +1,44 @@
+<%= form_with(model: [:admin, inventory], local: true) do |form| %>
+  <% if inventory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(inventory.errors.count, "error") %> prohibited this inventory from being saved:</h2>
+
+      <ul>
+        <% inventory.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_copies %>
+    <%= form.number_field :total_copies %>
+  </div>
+
+  <div class="field">
+    <%= form.label :barcode_no %>
+    <%= form.text_field :barcode_no %>
+  </div>
+
+  <div class="field">
+    <%= form.label :media_type %>
+    <%= form.collection_select :media_type_id, MediaType.all,
+                          :id, :name, class: 'form-control' %><br>
+  </div>
+
+  <div class="field">
+    <%= form.label :video %>
+    <%= form.collection_select :video_id, Video.all,
+                          :id, :title, class: 'form-control' %><br>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

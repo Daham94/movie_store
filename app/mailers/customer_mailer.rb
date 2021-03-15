@@ -8,8 +8,9 @@ class CustomerMailer < ApplicationMailer
   def reminder(customer)
     @customer = customer
     @greeting = "Hi"
+    @email = customer.email
 
-    mail(to: @customer.email, subject: "Reminder for the return")
+    mail(to: @email, subject: "Reminder for the return")
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

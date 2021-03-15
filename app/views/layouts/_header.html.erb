@@ -2,7 +2,7 @@
   <div class="container">
     <%= link_to "MovieStore", root_path, id: "logo" %>
     <nav>
-      <%= form_tag search_videos_path, method: :get, class: "navbar-form navbar-left", role: "search" do %>
+      <%= form_tag search_admin_videos_path, method: :get, class: "navbar-form navbar-left", role: "search" do %>
         <p>
           <%= text_field_tag :search, params[:search], class: "form-control", id: "search-field" %>
           <%= submit_tag "Search", name: nil, class: "btn btn-default", id: "search" %>
@@ -12,9 +12,6 @@
         <li><%= link_to "Home",root_path %></li>
         <li><%= link_to "Help",help_path %></li>
         <% if logged_in? %>
-          <% if log_in_as_super_user? || log_in_as_admin_user? %>
-            <li><%= link_to "Users", users_path %></li>
-          <% end %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>
@@ -29,15 +26,7 @@
             </ul>
           </li>
           <% else %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Login As <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Administration", login_path %></li>
-              <li><%= link_to "Customers", customer_login_path %></li>
-            </ul>
-          </li>
+            <li><%= link_to "Login", customer_login_path %></li>
           <% end %>
         </ul>
       </nav>

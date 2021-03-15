@@ -1,0 +1,34 @@
+<%= form_for [:admin, @actor] do |f| %>
+  <% if @actor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@actor.errors.count, "error") %> prohibited this actor from being saved:</h2>
+
+      <ul>
+        <% @actor.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :age %><br />
+    <%= f.text_field :age %>
+  </p>
+
+  <div class="gender">
+    <%= f.label :actor_gender %>
+    <%= f.collection_select :actor_gender_id, ActorGender.all,
+                          :id, :gender, class: 'form-control' %><br>
+  </div>
+
+  <div class="country">
+    <%= f.label :actor_country %>
+    <%= f.collection_select :actor_country_id, ActorCountry.all,
+                          :id, :name, class: 'form-control' %><br>
+  </div>
+  <p><%= f.submit %></p>
+<% end %>

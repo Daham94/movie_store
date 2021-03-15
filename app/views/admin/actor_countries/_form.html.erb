@@ -1,0 +1,18 @@
+<%= form_for [:admin, @actor_country] do |f| %>
+<% if @actor_country.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@actor_country.errors.count, "error") %> prohibited this actor_country from being saved:</h2>
+
+    <ul>
+      <% @actor_country.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

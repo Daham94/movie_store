@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_09_140255) do
+ActiveRecord::Schema.define(version: 2021_03_13_201511) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -34,15 +34,13 @@ ActiveRecord::Schema.define(version: 2021_03_09_140255) do
   end
 
   create_table "actor_countries", force: :cascade do |t|
-    t.string "country"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "actor_genders", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "gender"
   end
 
   create_table "actors", force: :cascade do |t|
@@ -50,19 +48,17 @@ ActiveRecord::Schema.define(version: 2021_03_09_140255) do
     t.integer "age"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "actor_gender_id", null: false
-    t.integer "actor_country_id", null: false
+    t.integer "actor_gender_id"
+    t.integer "actor_country_id"
     t.index ["actor_country_id"], name: "index_actors_on_actor_country_id"
     t.index ["actor_gender_id"], name: "index_actors_on_actor_gender_id"
   end
 
-  create_table "actors_videos", force: :cascade do |t|
-    t.integer "actor_id", null: false
+  create_table "actors_videos", id: false, force: :cascade do |t|
     t.integer "video_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["actor_id"], name: "index_actors_videos_on_actor_id"
-    t.index ["video_id"], name: "index_actors_videos_on_video_id"
+    t.integer "actor_id", null: false
+    t.index ["actor_id", "video_id"], name: "index_actors_videos_on_actor_id_and_video_id"
+    t.index ["video_id", "actor_id"], name: "index_actors_videos_on_video_id_and_actor_id"
   end
 
   create_table "content_ratings", force: :cascade do |t|
@@ -103,8 +99,8 @@ ActiveRecord::Schema.define(version: 2021_03_09_140255) do
   end
 
   create_table "genres_videos", id: false, force: :cascade do |t|
-    t.integer "genre_id", null: false
     t.integer "video_id", null: false
+    t.integer "genre_id", null: false
     t.index ["genre_id", "video_id"], name: "index_genres_videos_on_genre_id_and_video_id"
     t.index ["video_id", "genre_id"], name: "index_genres_videos_on_video_id_and_genre_id"
   end
@@ -116,8 +112,6 @@ ActiveRecord::Schema.define(version: 2021_03_09_140255) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "video_id", null: false
-    t.integer "media_type_id", null: false
-    t.index ["media_type_id"], name: "index_inventories_on_media_type_id"
     t.index ["video_id"], name: "index_inventories_on_video_id"
   end
 
@@ -158,8 +152,8 @@ ActiveRecord::Schema.define(version: 2021_03_09_140255) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
-    t.integer "user_level_id", null: false
     t.boolean "is_user", default: true
+    t.integer "user_level_id", null: false
     t.index ["user_level_id"], name: "index_users_on_user_level_id"
   end
 
@@ -169,24 +163,21 @@ ActiveRecord::Schema.define(version: 2021_03_09_140255) do
     t.date "release_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "content_rating_id", null: false
     t.string "thumbnail_file_name"
     t.string "thumbnail_content_type"
     t.integer "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
     t.integer "rating"
+    t.integer "content_rating_id"
     t.index ["content_rating_id"], name: "index_videos_on_content_rating_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "actors", "actor_countries"
   add_foreign_key "actors", "actor_genders"
-  add_foreign_key "actors_videos", "actors"
-  add_foreign_key "actors_videos", "videos"
   add_foreign_key "customers_movie_stocks_users", "customers"
   add_foreign_key "customers_movie_stocks_users", "movie_stocks"
   add_foreign_key "customers_movie_stocks_users", "users"
-  add_foreign_key "inventories", "media_types"
   add_foreign_key "inventories", "videos"
   add_foreign_key "movie_stocks", "inventories"
   add_foreign_key "reviews", "customers"

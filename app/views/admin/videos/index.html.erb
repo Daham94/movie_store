@@ -1,0 +1,15 @@
+<div class="row">
+  <% @videos.each do |video| %>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <%= link_to (image_tag video.thumbnail.url(:medium), class: 'thumbnail'), admin_video_path(video) %>
+        <% if log_in_as_super_user? || log_in_as_admin_user? %>
+          <%= button_to 'Destroy', admin_video_path(video), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+
+    </div>
+  <% end %>
+</div>
+
+<%= link_to 'New Video', new_admin_video_path %>

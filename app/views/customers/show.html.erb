@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>ID:</strong>
+  <%= @customer.id %>
+</p>
+
+<p>
   <strong>Name:</strong>
   <%= @customer.name %>
 </p>
@@ -15,8 +20,13 @@
   <%= @customer.password_digest %>
 </p>
 
-<%= link_to 'Send Reminder', send_reminder_mail_path(@customer) %> |
-<%= link_to 'Send Warning', send_warning_mail_path(@customer) %> |
+<%= link_to 'Edit', edit_customer_path(@customer) %>
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+<div class="container">
+	<div class="dashboard">
+		<ul>
+			<li id="link"><%= link_to "Videos", videos_path, class: "btn btn-light" %></li>
+			<li id="link"><%= link_to "Rentals", customers_movie_stocks_users_path, class: "btn btn-light" %></li>sy
+		</ul>
+	</div>
+</div>

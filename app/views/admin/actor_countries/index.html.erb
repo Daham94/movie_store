@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Actor Countries</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for actor_country in @actor_countries %>
+    <tr>
+      <td><%= actor_country.name %></td>
+      <td><%= link_to "Show", [:admin, actor_country] %></td>
+      <td><%= link_to "Edit", edit_admin_actor_country_path(actor_country) %></td>
+      <td><%= link_to "Destroy", [:admin, actor_country], :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Admin/Actor Country", new_admin_actor_country_path %></p>

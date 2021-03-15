@@ -1,0 +1,12 @@
+<h1>Show Actor Gender</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @actor_country.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_actor_country_path(@actor_country) %> |
+  <%= link_to "Destroy", [:admin, @actor_country], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", admin_actor_countries_path %>
+</p>
