@@ -13,6 +13,7 @@ class Admin::MovieStocksController < Admin::BaseController
   # GET /videos/new
   def new
     @movie_stock = MovieStock.new
+    @inventory = Inventory.all
   end
 
   # GET /videos/1/edit
@@ -26,11 +27,11 @@ class Admin::MovieStocksController < Admin::BaseController
     respond_to do |format|
       if @movie_stock.save
 
-        format.html { redirect_to @movie_stock, notice: "Video was successfully created." }
-        format.json { render :show, status: :created, location: @movie_stock }
+        format.html { redirect_to [:admin, @movie_stock], notice: "Movie Stock was successfully created." }
+        format.json { render :show, status: :created, location: [:admin, @movie_stock] }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @movie_stock.errors, status: :unprocessable_entity }
+        format.json { render json: [:admin, @movie_stock].errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,11 +40,11 @@ class Admin::MovieStocksController < Admin::BaseController
   def update
     respond_to do |format|
       if @movie_stock.update(movie_stock_params)
-        format.html { redirect_to @movie_stock, notice: "Video was successfully updated." }
-        format.json { render :show, status: :ok, location: @movie_stock }
+        format.html { redirect_to [:admin, @movie_stock], notice: "Movie Stock was successfully updated." }
+        format.json { render :show, status: :ok, location: [:admin, @movie_stock] }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @movie_stock.errors, status: :unprocessable_entity }
+        format.json { render json: [:admin, @movie_stock].errors, status: :unprocessable_entity }
       end
     end
   end
@@ -52,7 +53,7 @@ class Admin::MovieStocksController < Admin::BaseController
   def destroy
     @movie_stock.destroy
     respond_to do |format|
-      format.html { redirect_to movie_stocks_url, notice: "Video was successfully destroyed." }
+      format.html { redirect_to admin_movie_stocks_url, notice: "Movie Stock was successfully destroyed." }
       format.json { head :no_content }
     end
   end

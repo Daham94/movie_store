@@ -25,6 +25,7 @@ class Admin::CustomersMovieStocksUsersController < Admin::BaseController
   # POST /inventories or /inventories.json
   def create
     @customer_movie_stock_user = CustomersMovieStocksUser.new(customer_movie_stock_user_params)
+    @customer_movie_stock_user.user_id = current_user.id
 
     respond_to do |format|
       if @customer_movie_stock_user.save
@@ -67,6 +68,6 @@ class Admin::CustomersMovieStocksUsersController < Admin::BaseController
 
     # Only allow a list of trusted parameters through.
     def customer_movie_stock_user_params
-      params.require(:customers_movie_stocks_user).permit(:price, :late_fee, :discount, :rented_date, :returned_date, :customer_id, :movie_stock_id, :user_id)
+      params.require(:customers_movie_stocks_user).permit(:price, :late_fee, :discount, :rented_date, :returned_date, :customer_id, :movie_stock_id)
     end
 end

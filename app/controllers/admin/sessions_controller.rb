@@ -1,6 +1,6 @@
 class Admin::SessionsController < Admin::BaseController
-  layout :select_layout
   #include Admin::SessionsHelper
+
   def new
   end
 
@@ -19,11 +19,7 @@ class Admin::SessionsController < Admin::BaseController
 
   def destroy
     log_out
-    redirect_to root_url
+    redirect_to admin_root_url
   end
 
-  private
-    def select_layout
-      logged_in? ? "admin_layout" : "layout"
-    end
 end

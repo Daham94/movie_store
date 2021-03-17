@@ -1,3 +1,26 @@
 // Place all the styles related to the customers_movie_stocks_users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.field{
+
+}
+
+#customer{
+  float: left;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#movie_stock{
+  float: left;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#user{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

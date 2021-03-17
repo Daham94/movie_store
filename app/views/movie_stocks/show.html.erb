@@ -1,0 +1,28 @@
+<h1>Show Movie Stock</h1>
+
+<p>
+  <strong>ID:</strong>
+  <%= @movie_stock.id %>
+</p>
+
+<p>
+  <strong>Inventory:</strong>
+  <%= @movie_stock.inventory_id %>
+</p>
+
+<p>
+  <strong>Video:</strong>
+  <%= @movie_stock.inventory.video.title %>
+</p>
+
+<p>
+  <strong>Media Type:</strong>
+  <%= @movie_stock.inventory.media_type.name %>
+</p>
+
+<p>
+  <%= link_to "View All", movie_stocks_path %>
+</p>
+<p>
+  <%= link_to "Rent Now", new_customers_movie_stocks_user_path(@movie_stock) %>
+</p>

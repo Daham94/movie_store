@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_201511) do
+ActiveRecord::Schema.define(version: 2021_03_15_054513) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -112,6 +112,8 @@ ActiveRecord::Schema.define(version: 2021_03_13_201511) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "video_id", null: false
+    t.integer "media_type_id", null: false
+    t.index ["media_type_id"], name: "index_inventories_on_media_type_id"
     t.index ["video_id"], name: "index_inventories_on_video_id"
   end
 
@@ -178,6 +180,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_201511) do
   add_foreign_key "customers_movie_stocks_users", "customers"
   add_foreign_key "customers_movie_stocks_users", "movie_stocks"
   add_foreign_key "customers_movie_stocks_users", "users"
+  add_foreign_key "inventories", "media_types"
   add_foreign_key "inventories", "videos"
   add_foreign_key "movie_stocks", "inventories"
   add_foreign_key "reviews", "customers"

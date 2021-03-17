@@ -36,23 +36,23 @@
     <%= form.date_field :returned_date %>
   </div>
 
-  <div class="field">
+  <div class="field" id="customer">
     <%= form.label :customers %>
     <%= form.collection_select :customer_id, Customer.all,
                           :id, :name, class: 'form-control'%><br>
   </div>
 
-  <div class="field">
+  <div class="field" id="movie_stock">
     <%= form.label :movie_stocks %>
     <%= form.collection_select :movie_stock_id, MovieStock.all,
                           :id, :id, class: 'form-controll' %><br>
   </div>
 
-  <div class="field">
+  <!--div class="field" id="user">
     <%= form.label :users %>
     <%= form.collection_select :user_id, User.order(:name),
                           :id, :name, class: 'form-control' %><br>
-  </div>
+  </div-->
 
   <div class="actions">
     <%= form.submit "Create the Rental" %>

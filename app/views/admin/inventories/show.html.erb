@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>ID:</strong>
+  <%= @inventory.id %>
+</p>
+
+<p>
   <strong>Price:</strong>
   <%= @inventory.price %>
 </p>
@@ -15,5 +20,15 @@
   <%= @inventory.barcode_no %>
 </p>
 
-<%= link_to 'Edit', edit_inventory_path(@inventory) %> |
-<%= link_to 'Back', inventories_path %>
+<p>
+  <strong>Video:</strong>
+  <%= @inventory.video.title %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @inventory.media_type.name %>
+</p>
+
+<%= link_to 'Edit', edit_admin_inventory_path(@inventory) %> |
+<%= link_to 'Back', admin_inventories_path %>

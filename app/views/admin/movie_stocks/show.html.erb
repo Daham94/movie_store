@@ -1,0 +1,17 @@
+<h1>Show Movie Stock</h1>
+
+<p>
+  <strong>ID:</strong>
+  <%= @movie_stock.id %>
+</p>
+
+<p>
+  <strong>Inventory:</strong>
+  <%= @movie_stock.inventory_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_movie_stock_path(@movie_stock) %> |
+  <%= link_to "Destroy", [:admin, @movie_stock], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", admin_movie_stocks_path %>
+</p>

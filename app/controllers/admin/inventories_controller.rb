@@ -26,11 +26,11 @@ class Admin::InventoriesController < Admin::BaseController
 
     respond_to do |format|
       if @inventory.save
-        format.html { redirect_to @inventory, notice: "Inventory was successfully created." }
-        format.json { render :show, status: :created, location: @inventory }
+        format.html { redirect_to [:admin, @inventory], notice: "Inventory was successfully created." }
+        format.json { render :show, status: :created, location: [:admin, @inventory] }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @inventory.errors, status: :unprocessable_entity }
+        format.json { render json: [:admin, @inventory].errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,11 +39,11 @@ class Admin::InventoriesController < Admin::BaseController
   def update
     respond_to do |format|
       if @inventory.update(inventory_params)
-        format.html { redirect_to @inventory, notice: "Inventory was successfully updated." }
-        format.json { render :show, status: :ok, location: @inventory }
+        format.html { redirect_to [:admin, @inventory], notice: "Inventory was successfully updated." }
+        format.json { render :show, status: :ok, location: [:admin, @inventory] }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @inventory.errors, status: :unprocessable_entity }
+        format.json { render json: [:admin, @inventory].errors, status: :unprocessable_entity }
       end
     end
   end
@@ -52,7 +52,7 @@ class Admin::InventoriesController < Admin::BaseController
   def destroy
     @inventory.destroy
     respond_to do |format|
-      format.html { redirect_to inventories_url, notice: "Inventory was successfully destroyed." }
+      format.html { redirect_to admin_inventories_url, notice: "Inventory was successfully destroyed." }
       format.json { head :no_content }
     end
   end

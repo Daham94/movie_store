@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-4">
         <%= image_tag @video.thumbnail.url(:medium) %>
-        <div class="star-rating" data-score= <%= @avg_review %> ></div>
+        <p> <%= @avg_review %> </p>
           <em><%= "#{@review.length} reviews" %></em>
         <div class="table-responsive">
           <table class="table">
@@ -48,7 +48,7 @@
         <% else %>
           <% @review.each do |review| %>
             <div class="reviews">
-              <div class="star-rating" data-score= <%= review.rating %> ></div>
+              <p><%= review.rating %></p>
               <p><%= review.comment %></p>
             </div>
           <% end %>

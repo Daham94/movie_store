@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    @videos =Video.order("created_at DESC")
   end
 
   def help

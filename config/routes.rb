@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  namespace(:admin){ resources :media_types }
   namespace(:admin){ resources :user_levels }
   namespace(:admin){ resources :genres }
   namespace(:admin){ resources :actors }
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
     root 'sessions#new'
   end
   resources :customers
+  resources :movie_stocks
   resources :customers_movie_stocks_users
   resources :videos do
     collection do
@@ -33,8 +35,8 @@ Rails.application.routes.draw do
   post '/user_levels', to: 'admin/user_levels#create'
   get '/login', to: 'admin/sessions#new'
   post '/login', to: 'admin/sessions#create'
-  delete '/logout', to: 'admin/sessions#destroy'
-  get '/logout', to: 'admin/sessions#destroy'
+  delete '/admin_logout', to: 'admin/sessions#destroy'
+  get '/admin_logout', to: 'admin/sessions#destroy'
 #  get '/videos', to: 'dashboards#video'
   post '/video', to: 'admin/videos#create'
   #delete '/destroy_admin_video', to: 'admin/videos#destroy'
@@ -53,7 +55,8 @@ Rails.application.routes.draw do
   get 'admin/movie_stocks/new'
   root 'static_pages#home'
 
-  resources :customers
+  delete '/logout', to: 'customer_sessions#destroy'
+  get '/logout', to: 'customer_sessions#destroy'
     #resources :actor_videos
 
   get '/help', to: 'static_pages#help'

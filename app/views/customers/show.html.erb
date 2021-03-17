@@ -26,7 +26,8 @@
 	<div class="dashboard">
 		<ul>
 			<li id="link"><%= link_to "Videos", videos_path, class: "btn btn-light" %></li>
-			<li id="link"><%= link_to "Rentals", customers_movie_stocks_users_path, class: "btn btn-light" %></li>sy
+			<li id="link"><%= link_to "Rentals", customers_movie_stocks_users_path(@customer), class: "btn btn-light" %></li>
+      <li id="link"><%= link_to "Movie Stocks", movie_stocks_path, class: "btn btn-light" %></li>
 		</ul>
 	</div>
 </div>

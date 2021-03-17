@@ -4,13 +4,7 @@
 <div class="row">
   <div class="col">
       <aside class="col-md-4">
-        <h2>Add Media Types</h2>
-        <section class="media_type_form">
-          <%= render 'admin/shared/media_type_form', media_type: @media_type %>
-        </section>
-        <section class="actor_info">
-
-        </section>
+        <li><%= link_to "Add new Media Types", new_admin_media_type_path, class: "btn btn-light" %></li><br>
       </aside>
   </div>
 

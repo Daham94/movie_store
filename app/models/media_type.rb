@@ -1,4 +1,4 @@
-class MediaType < ApplicationRecord
-  has_many :inventories, dependent: :destroy
-  has_many :videos, :through => :inventories
+class MediaType < ActiveRecord::Base
+  #attr_accessible :name
+  has_many :inventories
 end

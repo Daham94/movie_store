@@ -10,20 +10,21 @@
       </ul>
     </div>
   <% end %>
+  <div class="field" id="video">
+    <%= form.label :video %>
+    <%= form.collection_select :video_id, Video.all,
+                          :id, :title, class: 'form-control' %><br>
+  </div>
+
+  <div class="field" id="media-type">
+    <%= form.label :media_type %>
+    <%= form.collection_select :media_type_id, MediaType.all,
+                          :id, :name, class: 'form-control' %><br>
+  </div>
 
   <div class="field">
     <%= form.label :price %>
-    <%= form.text_field :price, :value => Inventory.find(@movie_stock.inventory_id).price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :late_fee %>
-    <%= form.text_field :late_fee %>
-  </div>
-
-  <div class="field">
-    <%= form.label :discount %>
-    <%= form.text_field :discount %>
+    <%= form.text_field :price %>
   </div>
 
   <div class="field">
@@ -31,24 +32,19 @@
     <%= form.date_field :rented_date %>
   </div>
 
-  <div class="field">
-    <%= form.label :returned_date %>
-    <%= form.date_field :returned_date %>
-  </div>
-
-  <div class="field">
+  <!--div class="field" id="customer">
     <%= form.label :customers %>
     <%= form.collection_select :customer_id, Customer.all,
                           :id, :name, class: 'form-control'%><br>
-  </div>
+  </div-->
 
-  <div class="field">
+  <div class="field" id="movie_stock">
     <%= form.label :movie_stocks %>
-    <%= form.collection_select :movie_stock_id, MovieStock.all,
+    <%= form.collection_select :movie_stock_id, MovieStock.where(is_rented: :false),
                           :id, :id, class: 'form-controll' %><br>
   </div>
 
-  <div class="field">
+  <div class="field" id="user">
     <%= form.label :users %>
     <%= form.collection_select :user_id, User.order(:name),
                           :id, :name, class: 'form-control' %><br>

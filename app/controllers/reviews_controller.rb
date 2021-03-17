@@ -23,7 +23,7 @@ class ReviewsController < ApplicationController
     # POST /reviews or /reviews.json
     def create
       @review = Review.new(review_params)
-      #@review.customer_id = current_customer.id
+      @review.customer_id = current_user.id
       @review.video_id = @video.id
 
       respond_to do |format|
@@ -72,6 +72,6 @@ class ReviewsController < ApplicationController
       # Only allow a list of trusted parameters through.
       def review_params
         #params[:review].merge!(:customer_id => current_customer.id.to_s)
-        params.require(:review).permit(:rating, :comment, :customer_id)
+        params.require(:review).permit(:rating, :comment)
       end
 end

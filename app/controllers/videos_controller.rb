@@ -25,6 +25,29 @@ class VideosController < ApplicationController
     end
   end
 
+  def create
+
+    @review = Review.where(video_id: @video.id)
+
+    if @review.blank?
+      @video.rating = 1
+    else
+      @video.rating = @review.average(:rating).round(2)
+    end
+
+
+    respond_to do |format|
+      if @review.save
+
+        format.html { redirect_to @video, notice: "Video was successfully created." }
+        format.json { render :show, status: :created, location: @video }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @video.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
