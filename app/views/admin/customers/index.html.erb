@@ -23,7 +23,7 @@
           <td><%= link_to 'Edit', edit_admin_customer_path(customer) %></td>
         <% end %>
         <% if log_in_as_super_user? || log_in_as_admin_user? %>
-          <td><%= link_to 'Destroy', admin_customer_path(customer), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= button_to 'Destroy', admin_customer_path(customer), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>

@@ -14,8 +14,9 @@ class Admin::CustomersController < ApplicationController
     @customer = CustomerMailer.reminder
   end
 
-  def send_reminder_mail
-    @customer = CustomerMailer.reminder(set_customer)
+  def send_reminder_mail(customer)
+    @customer = customer
+    CustomerMailer.reminder([:admin, @customer]).deliver_now!
   end
 
   # GET /customers/new

@@ -20,8 +20,9 @@
   <%= @customer.password_digest %>
 </p>
 
-<%= link_to 'Send Reminder', send_reminder_mail_path(@customer) %> |
-<%= link_to 'Send Warning', admin_customers_mails_send_warning_mail_path(@customer) %> |
+<%= link_to 'Send Reminder', admin_send_reminder_mail_path %> |
+<%= link_to 'Send Warning', admin_send_warning_mail_path %> |
+<%= link_to 'Send WaitList Mail', admin_send_wait_list_mail_path %> |
 
 <% if log_in_as_super_user? || log_in_as_admin_user? %>
   <%= link_to 'Edit', edit_admin_customer_path(@customer) %> |

@@ -1,6 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Rental ID:</strong>
+  <%= @customer_movie_stock_user.id %>
+</p>
+
+<p>
+  <strong>Video:</strong>
+  <%= @customer_movie_stock_user.movie_stock.inventory.video.title %>
+</p>
+
+<p>
+  <strong>Media Type:</strong>
+  <%= @customer_movie_stock_user.movie_stock.inventory.media_type.name %>
+</p>
+
+<p>
   <strong>Price:</strong>
   <%= @customer_movie_stock_user.price %>
 </p>

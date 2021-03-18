@@ -45,11 +45,11 @@ Rails.application.routes.draw do
   post '/media_types', to: 'admin/media_types#create'
   #post '/actor_videos', to: 'videos#create'
   get '/rental', to: 'admin/dashboards#rental'
-  get :send_reminder_mail, to: 'customers#send_reminder_mail', as: :send_reminder_mail
-  get :send_warning_mail, to: 'admin/mails#send_warning_mail', as: :send_warning_mail
+  get '/send_reminder_mail/:id', to: 'admin/mails#send_reminder_mail', as: 'admin_send_reminder_mail'
+  get '/send_warning_mail/:id', to: 'admin/mails#send_warning_mail', as: 'admin_send_warning_mail'
+  get '/send_wait_list_mail/:id', to: 'admin/mails#send_wait_list_mail', as: 'admin_send_wait_list_mail'
 
   get 'admin/mails/index'
-  get 'admin/customers/mails/send_warning_mail'
 
   get 'admin/movie_stocks/index'
   get 'admin/movie_stocks/new'
