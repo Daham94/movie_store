@@ -33,7 +33,7 @@
         <td><%= link_to 'Show', admin_customers_movie_stocks_user_path(customer_movie_stock_user) %></td>
         <td><%= link_to 'Edit', edit_admin_customers_movie_stocks_user_path(customer_movie_stock_user) %></td>
         <% if log_in_as_super_user? || log_in_as_admin_user? %>
-          <td><%= link_to 'Destroy', admin_customers_movie_stocks_user_path(customer_movie_stock_user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= button_to 'Destroy', admin_customers_movie_stocks_user_path(customer_movie_stock_user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>

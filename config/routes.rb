@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   get :send_warning_mail, to: 'admin/mails#send_warning_mail', as: :send_warning_mail
 
   get 'admin/mails/index'
-  get 'admin/mails/send_mail'
+  get 'admin/customers/mails/send_warning_mail'
 
   get 'admin/movie_stocks/index'
   get 'admin/movie_stocks/new'

@@ -46,6 +46,7 @@ class Admin::MovieStocksController < Admin::BaseController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: [:admin, @movie_stock].errors, status: :unprocessable_entity }
       end
+
     end
   end
 

@@ -10,17 +10,6 @@
       </ul>
     </div>
   <% end %>
-  <div class="field" id="video">
-    <%= form.label :video %>
-    <%= form.collection_select :video_id, Video.all,
-                          :id, :title, class: 'form-control' %><br>
-  </div>
-
-  <div class="field" id="media-type">
-    <%= form.label :media_type %>
-    <%= form.collection_select :media_type_id, MediaType.all,
-                          :id, :name, class: 'form-control' %><br>
-  </div>
 
   <div class="field">
     <%= form.label :price %>

@@ -40,5 +40,10 @@
   <%= @customer_movie_stock_user.user.name %>
 </p>
 
+<% if @customer_movie_stock_user.returned_date.present? %>
+  <%= link_to 'Print PDF', admin_customers_movie_stocks_user_path(@customer_movie_stock_user, format: "pdf") %> |
+<% else %>
+  <%= link_to 'Make a Rent', new_admin_customers_movie_stocks_user_path %> |
+<% end %>
 <%= link_to 'Edit', edit_admin_customers_movie_stocks_user_path(@customer_movie_stock_user) %> |
 <%= link_to 'Back', admin_customers_movie_stocks_users_path %>

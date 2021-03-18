@@ -21,7 +21,7 @@
 </p>
 
 <%= link_to 'Send Reminder', send_reminder_mail_path(@customer) %> |
-<%= link_to 'Send Warning', send_warning_mail_path(@customer) %> |
+<%= link_to 'Send Warning', admin_customers_mails_send_warning_mail_path(@customer) %> |
 
 <% if log_in_as_super_user? || log_in_as_admin_user? %>
   <%= link_to 'Edit', edit_admin_customer_path(@customer) %> |

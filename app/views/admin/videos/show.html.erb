@@ -28,23 +28,29 @@
               </tr>
               <tr>
                 <td><strong>Genres:</strong></td>
-                <td><%= @video.genres.ids %></td>
+                <td>
+                  <% @video.genre_ids.each do |genre| %>
+                    <%= Genre.find(genre).name %> |
+                  <% end %>
+                </td>
               </tr>
               <tr>
                 <td><strong>Actors:</strong></td>
-                <td><%= @video.actors.ids %></td>
+                <td>
+                  <% @video.actor_ids.each do |actor| %>
+                    <%= Actor.find(actor).name %> |
+                  <% end %>
+                </td>
               </tr>
             </tbody>
           </table>
-          <%= link_to "Write a Review", new_admin_video_review_path(@video) %>
         </div>
       </div>
       <div class="col-md-7 col-d-offset-1">
         <h1 class="review-title"><%= @video.title %></h1>
         <p><%= @video.description %></p>
         <% if @review.blank? %>
-          <h3>No reviews just yet, would you like to add the first!</h3>
-          <%= link_to "Write Review", new_admin_video_review_path(@video), class: "btn btn-danger" %>
+          <h3>No reviews just yet!</h3>
         <% else %>
           <% @review.each do |review| %>
             <div class="reviews">

@@ -8,6 +8,19 @@ class Admin::CustomersMovieStocksUsersController < Admin::BaseController
 
   # GET /inventories/1 or /inventories/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "Rental No. #{@customer_movie_stock_user.id}",
+        page_size: 'A4',
+        template: "admin/customers_movie_stocks_users/show.html.erb",
+        layout: "admin/pdf.html",
+        orientation: "Landscape",
+        lowquality: true,
+        zoom: 1,
+        dpi: 75
+      end
+    end
   end
 
   # GET /inventories/new
