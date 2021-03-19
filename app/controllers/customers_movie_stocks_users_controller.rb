@@ -1,9 +1,10 @@
 class CustomersMovieStocksUsersController < ApplicationController
   before_action :set_customer_movie_stock_user, only: %i[ show edit update destroy ]
-
+  before_action :require_login
   # GET /inventories or /inventories.json
   def index
-    @customers_movie_stocks_users = CustomersMovieStocksUser.all
+
+    @customers_movie_stocks_users = CustomersMovieStocksUser.where(customer_id: current_user.id)
   end
 
   # GET /inventories/1 or /inventories/1.json
@@ -82,5 +83,12 @@ class CustomersMovieStocksUsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def customer_movie_stock_user_params
       params.require(:customers_movie_stocks_user).permit(:price, :rented_date, :user_id)
+    end
+
+    def require_login
+      unless current_user
+        redirect_to customer_login_path
+
+      end
     end
 end

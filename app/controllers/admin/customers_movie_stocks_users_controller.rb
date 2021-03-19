@@ -44,6 +44,22 @@ class Admin::CustomersMovieStocksUsersController < Admin::BaseController
       if @customer_movie_stock_user.save
         format.html { redirect_to [:admin, @customer_movie_stock_user], notice: "Rental was successfully created." }
         format.json { render :show, status: :created, location: @customer_movie_stock_user }
+
+        format.html
+        format.pdf do
+          render pdf: "Rental No. #{@customer_movie_stock_user.id}",
+          page_size: 'A4',
+          template: "admin/customers_movie_stocks_users/show.html.erb",
+          layout: "admin/pdf.html",
+          orientation: "Landscape",
+          lowquality: true,
+          zoom: 1,
+          dpi: 75
+        end
+
+          customer = Customer.find(params[:id])
+          CustomerMailer.receipt(customer).deliver
+          flash[:notice] = "Email has been sent."
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @customer_movie_stock_user.errors, status: :unprocessable_entity }

@@ -54,7 +54,8 @@
   <strong>User:</strong>
   <%= @customer_movie_stock_user.user.name %>
 </p>
-
-<%= link_to 'Edit', edit_customers_movie_stocks_user_path(@customer_movie_stock_user) %> |
-<%= link_to 'Back', customers_movie_stocks_users_path %> |
-<%= link_to 'Print PDF', customers_movie_stocks_user_path(@customer_movie_stock_user, format: "pdf") %>
+<div class="rental">
+  <li><%= link_to 'Edit', edit_customers_movie_stocks_user_path(@customer_movie_stock_user) %> |</li>
+  <li><%= link_to 'Back', customers_movie_stocks_users_path %> |</li>
+  <li><%= link_to 'Print PDF', customers_movie_stocks_user_path(@customer_movie_stock_user, format: "pdf") %></li>  
+</div>

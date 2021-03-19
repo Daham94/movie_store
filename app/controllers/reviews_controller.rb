@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
     before_action :set_review, only: [ :show, :edit, :update, :destroy ]
     before_action :set_video
+    before_action :require_login
 
     # GET /reviews or /reviews.json
     def index
@@ -25,6 +26,12 @@ class ReviewsController < ApplicationController
       @review = Review.new(review_params)
       @review.customer_id = current_user.id
       @review.video_id = @video.id
+      video = Video.find(@review.video_id)
+      if @review.blank?
+        video.rating = 0
+      else
+        video.rating = @video.Review.average(:rating).round(2)
+      end
 
       respond_to do |format|
         if @review.save
@@ -73,5 +80,12 @@ class ReviewsController < ApplicationController
       def review_params
         #params[:review].merge!(:customer_id => current_customer.id.to_s)
         params.require(:review).permit(:rating, :comment)
+      end
+
+      def require_login
+        unless current_user
+          redirect_to customer_login_path
+
+        end
       end
 end

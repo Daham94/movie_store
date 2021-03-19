@@ -7,14 +7,12 @@
 <%#= link_to image_tag("rails.svg", alt: "Rails logo", width: "200"),
 "https://rubyonrails.org/" %>
 
-<div class="container"> 
-  <% @videos.each do |video| %>
-    <% if video !=  %>
+<div class="container">
+  <% @videos.limit(4).each do |video, i| %>
       <div class="col-sm-6 col-md-3">
         <div class="thumbnail">
           <%= link_to (image_tag video.thumbnail.url(:medium), class: 'thumbnail'), video %>
         </div>
       </div>
-    <% end %>
   <% end %>
 </div>

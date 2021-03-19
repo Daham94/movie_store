@@ -31,4 +31,11 @@ class CustomerMailer < ApplicationMailer
 
     mail(to: @customer.email, subject: "Your order is Available")
   end
+
+  def receipt(customer)
+    @customer = customer
+    @greeting = "Hi"
+
+    mail(to: @customer.email, subject: "Your Receipt")
+  end
 end

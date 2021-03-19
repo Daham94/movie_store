@@ -1,5 +1,23 @@
 <h1>New Actor</h1>
 
-<%= render 'form' %>
 
-<p><%= link_to "Back to List", admin_actors_path %></p>
+<div class="row">
+
+  <div class="col-md-6 col-md-offset-3" id="add-video">
+    <%= render 'form' %>
+  </div>
+
+
+  <div class="container">
+  	<div class="dashboard">
+  		<ul>
+  			<li><%= link_to "Add new Actor Genders", new_admin_actor_gender_path, class: "btn btn-light" %></li><br>
+        <li><%= link_to "Add new Actor Countries", new_admin_actor_country_path, class: "btn btn-light" %></li><br>
+  		</ul>
+  	</div>
+  </div>
+
+</div>
+
+<%= link_to "Actors List", admin_actors_path %> |
+<%= link_to "Back", new_admin_video_path %>

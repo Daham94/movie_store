@@ -6,9 +6,20 @@
 </p>
 
 <p>
+  <strong>Video:</strong>
+  <%= @movie_stock.inventory.video.title %>
+</p>
+
+<p>
+  <strong>Media Type:</strong>
+  <%= @movie_stock.inventory.media_type.name %>
+</p>
+
+<p>
   <strong>Inventory:</strong>
   <%= @movie_stock.inventory_id %>
 </p>
+
 
 <p>
   <%= link_to "Edit", edit_admin_movie_stock_path(@movie_stock) %> |

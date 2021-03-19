@@ -5,12 +5,16 @@
 <table>
   <tr>
     <th>ID</th>
+    <th>Video</th>
+    <th>Media Type</th>
     <th>Is Rented?</th>
     <th>Inventory</th>
   </tr>
   <% for movie_stock in @movie_stocks %>
     <tr>
       <td><%= movie_stock.id %></td>
+      <td><%= movie_stock.inventory.video.title %></td>
+      <td><%= movie_stock.inventory.media_type.name %></td>
       <td><%= movie_stock.is_rented %></td>
       <td><%= movie_stock.inventory_id %></td>
       <td><%= link_to "Show", [:admin, movie_stock] %></td>
