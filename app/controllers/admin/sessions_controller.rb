@@ -1,5 +1,4 @@
 class Admin::SessionsController < Admin::BaseController
-  #include Admin::SessionsHelper
 
   def new
   end

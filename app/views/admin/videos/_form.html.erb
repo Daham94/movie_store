@@ -11,29 +11,29 @@
     <%= form.text_field :description %>
   </div>
 
-  <div class="field">
+  <div class="field", id="thumbnail">
     <%= form.label :thumbnail %>
     <%= form.file_field :thumbnail %>
   </div>
 
-  <div class="field">
+  <div class="field", id="release-date">
     <%= form.label :release_date %>
     <%= form.date_field :release_date %>
   </div>
 
-  <div class="field">
+  <div class="field", id="content-rating">
     <%= form.label :content_rating %>
     <%= form.collection_select :content_rating_id, ContentRating.all,
                           :id, :name, class: 'form-control' %><br>
   </div>
 
-  <div class="field">
+  <div class="field", id="actors">
     <%= form.label :actors %>
     <%= form.collection_select :actor_ids, Actor.order(:name),
                           :id, :name, {}, {class: 'form-control select2', multiple: true } %><br>
   </div>
 
-  <div class="field">
+  <div class="field", id="genres">
     <%= form.label :genres %>
     <%= form.collection_select :genre_ids, Genre.order(:name),
                           :id, :name, {}, {class: 'form-control select2', multiple: true } %><br>

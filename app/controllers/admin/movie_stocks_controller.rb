@@ -1,26 +1,26 @@
 class Admin::MovieStocksController < Admin::BaseController
   before_action :set_movie_stock, only: %i[ show edit update destroy ]
 
-  # GET /videos or /videos.json
+  # GET /movie_stocks or /movie_stocks.json
   def index
     @movie_stocks = MovieStock.all
   end
 
-  # GET /videos/1 or /videos/1.json
+  # GET /movie_stocks/1 or /movie_stocks/1.json
   def show
   end
 
-  # GET /videos/new
+  # GET /movie_stocks/new
   def new
     @movie_stock = MovieStock.new
     @inventory = Inventory.all
   end
 
-  # GET /videos/1/edit
+  # GET /movie_stocks/1/edit
   def edit
   end
 
-  # POST /videos or /videos.json
+  # POST /movie_stocks or /movie_stocks.json
   def create
     @movie_stock = MovieStock.new(movie_stock_params)
 
@@ -36,7 +36,7 @@ class Admin::MovieStocksController < Admin::BaseController
     end
   end
 
-  # PATCH/PUT /videos/1 or /videos/1.json
+  # PATCH/PUT /movie_stocks/1 or /movie_stocks/1.json
   def update
     respond_to do |format|
       if @movie_stock.update(movie_stock_params)
@@ -50,7 +50,7 @@ class Admin::MovieStocksController < Admin::BaseController
     end
   end
 
-  # DELETE /videos/1 or /videos/1.json
+  # DELETE /movie_stocks/1 or /movie_stocks/1.json
   def destroy
     @movie_stock.destroy
     respond_to do |format|

@@ -1,4 +1,4 @@
-class Admin::MediaTypesController < ApplicationController
+class Admin::MediaTypesController < Admin::BaseController
   before_action :set_media_type, only: %i[ show edit update destroy ]
 
   def index

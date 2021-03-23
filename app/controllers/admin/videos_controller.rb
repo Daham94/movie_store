@@ -1,17 +1,13 @@
 class Admin::VideosController < Admin::BaseController
   before_action :set_video, only: %i[ show edit update destroy ]
 
-  def search
-    if params[:search].present?
-      @videos = Video.search(params[:search])
-    else
-      @videos = Video.all
-    end
-  end
-
   # GET /videos or /videos.json
   def index
-    @videos =Video.all
+    @videos =Video.order("created_at DESC")
+    if params[:search]
+      @search_term = params[:search]
+      @videos = @videos.search_by(@search_term)
+    end
   end
 
   # GET /videos/1 or /videos/1.json

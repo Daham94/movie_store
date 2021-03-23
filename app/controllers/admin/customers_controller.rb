@@ -1,4 +1,4 @@
-class Admin::CustomersController < ApplicationController
+class Admin::CustomersController < Admin::BaseController
   before_action :set_customer, only: %i[ show edit update destroy ]
 
   # GET /customers or /customers.json
@@ -35,7 +35,7 @@ class Admin::CustomersController < ApplicationController
     respond_to do |format|
       if @customer.save
         format.html { redirect_to [:admin, @customer], notice: "Customer was successfully created." }
-        format.json { render :show, status: :created, location: [:admin, @customer] }
+        format.json { render :admin_customer_path, status: :created, location: [:admin, @customer] }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class Admin::CustomersController < ApplicationController
         format.json { render :show, status: :ok, location: [:admin, @customer] }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
+        format.json { render json: [:admin, @customer].errors, status: :unprocessable_entity }
       end
     end
   end

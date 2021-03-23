@@ -4,10 +4,12 @@
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Name</th>
   </tr>
   <% for genre in @genres %>
     <tr>
+      <td><%= genre.id %></td>
       <td><%= genre.name %></td>
       <td><%= link_to "Show", [:admin, genre] %></td>
       <td><%= link_to "Edit", edit_admin_genre_path(genre) %></td>

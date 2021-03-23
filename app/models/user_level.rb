@@ -1,4 +1,4 @@
 class UserLevel < ActiveRecord::Base
-  #attr_accessible :level
   has_many :users
+  validates :level, presence: true
 end

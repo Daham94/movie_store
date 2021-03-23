@@ -31,7 +31,7 @@ class Admin::UsersController < Admin::BaseController
       end
   end
 
-  # PATCH/PUT /users/1 or /videos/1.json
+  # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
       if @user.update(user_params)
@@ -44,7 +44,7 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
-  # DELETE /users/1 or /videos/1.json
+  # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy
     respond_to do |format|

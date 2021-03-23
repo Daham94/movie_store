@@ -7,14 +7,65 @@
     padding: 0px;
   }
 }
-
-.dashboard{
-  float: right;
-  li{
-    list-style-type: none;
-    text-decoration: none;
-    border-radius: 5px;
-    background-color: #eee;
+#add-video{
+  margin-left: 60px;
+  margin-right: 50px;
+  select{
+    margin-top: 15px;
 
   }
+  .thumbnail{
+    margin-top: 15px;
+    width: 45%;
+    border-style: hidden;
+  }
+
+  .release-date{
+    width: 45%;
+    margin-top: -107px;
+    input{
+      padding: 3.5px;
+    }
+  }
+
+  .rating{
+    width: 45%;
+    margin-top: -20px;
+  }
+
+  .content-rating{
+    width: 45%;
+    float: right;
+    margin-top: -60px;
+    padding-right: 0px;
+  }
+}
+
+.actor-form{
+  input{
+    position: absolute;
+    float: right;
+  }
+}
+
+#add-video input{
+  margin-bottom: 20px;
+}
+
+#add-video select{
+  margin-bottom: 20px;
+}
+
+#add-stuff{
+  margin-left: 15px;
+}
+
+#actors{
+  width: 250px;
+  float: left;
+}
+
+#genres{
+  width: 250px;
+  float: right;
 }

@@ -3,19 +3,9 @@
 <h1>Sign up</h1>
 
 <div class="row">
-
-  <div class="col-md-6 col-md-offset-3" id="add-video">
+  <div class="col-md-6 col-md-offset-3", id="user-signup">
     <%= render 'signup_form', user: @user %>
   </div>
-
-  <div class="container">
-  	<div class="dashboard">
-  		<ul>
-  			<li><%= link_to "Add new User Level", new_admin_user_level_path, class: "btn btn-light" %></li><br>
-  		</ul>
-  	</div>
-  </div>
-
 </div>
 
 <%= link_to 'All Users', admin_users_path %>

@@ -1,12 +1,12 @@
 class MovieStocksController < ApplicationController
   before_action :set_movie_stock, only: %i[ show ]
 
-  # GET /videos or /videos.json
+  # GET /movie_stocks or /movie_stocks.json
   def index
     @movie_stocks = MovieStock.all
   end
 
-  # GET /videos/1 or /videos/1.json
+  # GET /movie_stocks/1 or /movie_stocks/1.json
   def show
   end
 

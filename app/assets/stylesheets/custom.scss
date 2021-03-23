@@ -71,7 +71,7 @@ p {
 
 /* footer */
 footer {
-  margin-top: 400px;
+  margin-top: 40px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #777;
@@ -107,6 +107,10 @@ select{
   margin-bottom: 15px;
 }
 
+submit{
+  margin-top: 20px;
+}
+
 input {
   height: auto !important;
 }
@@ -133,62 +137,14 @@ input {
   }
 }
 
-#add-video{
-  margin-left: 60px;
-  margin-right: 50px;
-  select{
-    margin-top: 15px;
-
-  }
-  .thumbnail{
-    margin-top: 15px;
-    width: 45%;
-    border-style: hidden;
-  }
-
-  .release-date{
-    width: 45%;
-    float: right;
-    margin-top: -107px;
-    input{
-      padding: 3.5px;
-    }
-  }
-
-  .rating{
-    width: 45%;
-    margin-top: -20px;
-  }
-
-  .content-rating{
-    width: 45%;
-    float: right;
-    margin-top: -60px;
-    padding-right: 0px;
-  }
-}
-
-.actor-form{
-  input{
-    position: absolute;
-    float: right;
-  }
-}
-
-#add-stuff{
-  float: right;
-  margin-left: 15px;
-}
-
 .dashboard{
   margin: 50px;
   text-align: center;
-
 }
 
 #link{
-  padding: 15px;
-  margin: 10px;
+  padding:20px 30px;
+  margin: auto;
   list-style-type: none;
   text-decoration: none;
   overflow: hidden;
@@ -196,5 +152,25 @@ input {
   border-style: hidden;
   border-radius: 5px;
   width: 500px;
-  background-color: #eee;
+  background-color: #222;
+}
+#link:hover{
+  background-color: #fff;
+}
+
+#video-link{
+  padding: 20px 30px;
+  margin: auto;
+  list-style-type: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: inline;
+  border-style: none;
+  border-radius: 5px;
+  width: 500px;
+  background-color: #222;
+}
+
+#video-link:hover{
+  background-color: #fff;
 }

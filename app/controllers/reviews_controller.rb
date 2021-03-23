@@ -26,17 +26,18 @@ class ReviewsController < ApplicationController
       @review = Review.new(review_params)
       @review.customer_id = current_user.id
       @review.video_id = @video.id
-      video = Video.find(@review.video_id)
-      if @review.blank?
-        video.rating = 0
-      else
-        video.rating = @video.Review.average(:rating).round(2)
-      end
+      video = Video.where(id: @review.video_id)
+
 
       respond_to do |format|
         if @review.save
           format.html { redirect_to @video, notice: "Review was successfully created." }
           format.json { render :show, status: :created, location: @review }
+          if @review.blank?
+            video.rating = 0
+          else
+            video.rating = @review.average(:rating).round(2)
+          end
         else
           format.html { render :new, status: :unprocessable_entity }
           format.json { render json: @review.errors, status: :unprocessable_entity }

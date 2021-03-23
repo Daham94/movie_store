@@ -1,12 +1,12 @@
 class Admin::CustomersMovieStocksUsersController < Admin::BaseController
   before_action :set_customer_movie_stock_user, only: %i[ show edit update destroy ]
 
-  # GET /inventories or /inventories.json
+  # GET /customers_movie_stocks_users or /customers_movie_stocks_users.json
   def index
     @customers_movie_stocks_users = CustomersMovieStocksUser.all
   end
 
-  # GET /inventories/1 or /inventories/1.json
+  # GET /customers_movie_stocks_users/1 or /customers_movie_stocks_users/1.json
   def show
     respond_to do |format|
       format.html
@@ -23,7 +23,7 @@ class Admin::CustomersMovieStocksUsersController < Admin::BaseController
     end
   end
 
-  # GET /inventories/new
+  # GET /customers_movie_stocks_users/new
   def new
     @customer_movie_stock_user = CustomersMovieStocksUser.new
     @customer = Customer.new
@@ -31,11 +31,11 @@ class Admin::CustomersMovieStocksUsersController < Admin::BaseController
     @user = User.new
   end
 
-    # GET /inventories/1/edit
+    # GET /customers_movie_stocks_users/1/edit
   def edit
   end
 
-  # POST /inventories or /inventories.json
+  # POST /customers_movie_stocks_users or /customers_movie_stocks_users.json
   def create
     @customer_movie_stock_user = CustomersMovieStocksUser.new(customer_movie_stock_user_params)
     @customer_movie_stock_user.user_id = current_user.id
@@ -67,7 +67,7 @@ class Admin::CustomersMovieStocksUsersController < Admin::BaseController
     end
   end
 
-  # PATCH/PUT /inventories/1 or /inventories/1.json
+  # PATCH/PUT /customers_movie_stocks_users/1 or /customers_movie_stocks_users/1.json
   def update
     respond_to do |format|
       if @customer_movie_stock_user.update(customer_movie_stock_user_params)
@@ -80,7 +80,7 @@ class Admin::CustomersMovieStocksUsersController < Admin::BaseController
     end
   end
 
-  # DELETE /inventories/1 or /inventories/1.json
+  # DELETE /customers_movie_stocks_users/1 or /customers_movie_stocks_users/1.json
   def destroy
     @customer_movie_stock_user.destroy
     respond_to do |format|

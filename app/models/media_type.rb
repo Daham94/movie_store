@@ -1,4 +1,4 @@
 class MediaType < ActiveRecord::Base
-  #attr_accessible :name
   has_many :inventories
+  validates :name, presence: true
 end
